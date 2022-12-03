@@ -54,6 +54,7 @@ public class StealthPlayerController : Character {
     public float standingEnergyMultiplier = 0.5f;
     public float timerToShoot;
     public float timeToShoot;
+    public float energyHoverSpending;
     public ProgressBar energyBar;
     [Header("Skills")]
     public bool cloaked = false;
@@ -289,6 +290,11 @@ public class StealthPlayerController : Character {
             {
                 Shot();
             }
+
+            if(Input.GetKey(KeyCode.LeftShift))
+            {
+                Hover();
+            }
             if (inputVector.magnitude > 0.1f)
             {
                 threadController.moving = true;
@@ -442,6 +448,12 @@ public class StealthPlayerController : Character {
             rb.velocity = newSpeed;
 
         }
+    }
+
+    protected void Hover()
+    {
+        energy -= energyHoverSpending * Time.deltaTime;
+        transform.position = new Vector3(transform.position.x, 1.50f, transform.position.z);
     }
 
     protected void Shot()
