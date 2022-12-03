@@ -201,6 +201,7 @@ public class AIAgent : MonoBehaviour {
     }
     public void OnShock(float stunTime)
     {
+        Debug.Log("Hit Enemy");
         StopAllCoroutines();
         searchLight.enabled = false;
         stunParticles.Play();
@@ -213,11 +214,11 @@ public class AIAgent : MonoBehaviour {
         yield return new WaitForSeconds(time);
         aiEnabled = true;
 
-       // target = StealthPlayerController.getInstance().transform;
-        //lastTargetPosition.position = target.position;
+        target = StealthPlayerController.getInstance().transform;
+        lastTargetPosition.position = target.position;
         searchLight.enabled = true;
         stunParticles.Stop();
-        //setState(chasingState);
+        setState(chasingState);
     }
 
     public void SeeEnemy(Transform enemy)
