@@ -13,7 +13,7 @@ public class Door : MonoBehaviour {
     float currentTimer = 0;
 
     public float openDeltaY = 2;
-
+    public BoxCollider boxCollider;
 
     Vector3 startingPos;
     Vector3 targetPos;
@@ -25,6 +25,7 @@ public class Door : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+
         if(state== State.open)
         {
             return;
@@ -70,15 +71,22 @@ public class Door : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (state == State.opening)
+        switch(state)
         {
-            currentTimer += Time.deltaTime;
-            doorObject.transform.position = Vector3.Lerp(startingPos, targetPos, currentTimer / openTime);
-            if (currentTimer >= openTime)
-            {
-                doorObject.transform.position = targetPos;
-                state = State.open;
-            }
+            case State.opening:
+                boxCollider.isTrigger = false;
+                currentTimer += Time.deltaTime;
+                doorObject.transform.position = Vector3.Lerp(startingPos, targetPos, currentTimer / openTime);
+                if (currentTimer >= openTime)
+                {
+                    doorObject.transform.position = targetPos;
+                    state = State.open;
+                }
+            break;
+
+            case State.open:
+                boxCollider.isTrigger = true;
+            break;
         }
 	}
 }
