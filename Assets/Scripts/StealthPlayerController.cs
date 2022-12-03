@@ -52,6 +52,8 @@ public class StealthPlayerController : Character {
     public float lowEnergyMultiplier = 0.5f;
     public float energyDrainSpeed = 5;
     public float standingEnergyMultiplier = 0.5f;
+    public float timerToShoot;
+    public float timeToShoot;
     public ProgressBar energyBar;
     [Header("Skills")]
     public bool cloaked = false;
@@ -282,7 +284,8 @@ public class StealthPlayerController : Character {
                 threadController.speed = threadWalkSpeed;
                 threadController.audioSource.pitch = 1.0f;
             }
-            if(Input.GetKeyDown(KeyCode.Space))
+            timerToShoot += Time.deltaTime;
+            if(Input.GetKeyDown(KeyCode.Space) && timerToShoot >= timeToShoot)
             {
                 Shot();
             }
@@ -444,6 +447,7 @@ public class StealthPlayerController : Character {
     protected void Shot()
     {
         Instantiate(bullet, bulletExit.transform.position, bulletExit.transform.rotation);
+        timerToShoot = 0;
     }
 
     public void rotate(Vector3 direction3d)
