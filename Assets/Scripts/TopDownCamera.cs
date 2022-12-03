@@ -10,13 +10,14 @@ public class TopDownCamera : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         playerTransform = StealthPlayerController.getInstance().transform;
-        lastPlayerPosition = playerTransform.position;
+        lastPlayerPosition = new Vector3(playerTransform.transform.position.x, 22.1f, playerTransform.transform.position.z);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        playerDelta = playerTransform.position - lastPlayerPosition;
+        playerDelta = new Vector3(playerTransform.transform.position.x, 22.1f, playerTransform.transform.position.z) - lastPlayerPosition;
         transform.position += playerDelta;
-        lastPlayerPosition = playerTransform.position;
+        lastPlayerPosition = new Vector3(playerTransform.transform.position.x, 22.1f, playerTransform.transform.position.z);
+        //transform.position = new Vector3(playerTransform.transform.position.x, transform.position.y, playerTransform.transform.position.z);
 	}
 }

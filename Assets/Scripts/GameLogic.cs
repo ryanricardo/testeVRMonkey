@@ -113,7 +113,7 @@ public class GameLogic : MonoBehaviour {
 
     public void Start()
     {
-        if (Input.GetJoystickNames().Length == 0)
+        /*if (Input.GetJoystickNames().Length == 0)
         {
             keyBoardKeys.SetActive(true);
             gamepadKeys.SetActive(false);
@@ -122,7 +122,7 @@ public class GameLogic : MonoBehaviour {
         {
             keyBoardKeys.SetActive(false);
             gamepadKeys.SetActive(true);
-        }
+        }*/
 
 
         wheelSound = playerWheelSource.volume;

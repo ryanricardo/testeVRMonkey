@@ -60,6 +60,7 @@ public class Door : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        boxCollider = GetComponentInChildren<BoxCollider>();
         startingPos = doorObject.position;
         targetPos = doorObject.position - Vector3.up * openDeltaY;
 

@@ -291,6 +291,7 @@ public class StealthPlayerController : Character {
                 Shot();
             }
 
+
             if(Input.GetKey(KeyCode.LeftShift))
             {
                 Hover();
@@ -452,7 +453,6 @@ public class StealthPlayerController : Character {
 
     protected void Hover()
     {
-        energy -= energyHoverSpending * Time.deltaTime;
         transform.position = new Vector3(transform.position.x, 1.50f, transform.position.z);
     }
 
