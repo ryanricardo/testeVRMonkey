@@ -7,6 +7,9 @@ public class Character : MonoBehaviour {
     public enum States { idle,moving,hitStun,shocking,attacking}
     public States state = States.idle;
     public bool dead = false;
+    public bool bossPause;
+    public float timerToPause;
+    public float timeToPause;
     public bool hitStun = false;
     public bool boss;
     public AudioSource audioSource;
@@ -26,7 +29,21 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(boss)
+        {
+            timerToPause += Time.deltaTime;
+            if(timerToPause >= timeToPause)
+            {
+                dead = true;
+                if(timerToPause >= timeToPause * 2)
+                {
+                    dead = false;
+                    timerToPause = 0;
+                }
+                
+                
+            }
+        }
 	}
 
     public void SetState(States newState)
