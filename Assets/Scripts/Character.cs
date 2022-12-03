@@ -8,6 +8,7 @@ public class Character : MonoBehaviour {
     public States state = States.idle;
     public bool dead = false;
     public bool hitStun = false;
+    public bool boss;
     public AudioSource audioSource;
     public bool friend = false;
     public Transform target;
@@ -17,6 +18,7 @@ public class Character : MonoBehaviour {
 
     public bool visible = true;
     public GameObject bullet;
+    public GameObject key;
 	// Use this for initialization
 	void Start () {
         audioSource = GetComponent<AudioSource>();
@@ -54,8 +56,16 @@ public class Character : MonoBehaviour {
     public virtual void DealDamage(float val)
     {
         energyLeft -= val;
+        Debug.Log(energyLeft);
         if(energyLeft <= 0)
+        {
             dead = true;
+            if(boss)
+                Instantiate(key, new Vector3(transform.position.x, transform.position.y + 4, transform.position.z ), Quaternion.identity);
+        }
+            
+
+        
 
     }
 }

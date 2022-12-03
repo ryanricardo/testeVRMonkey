@@ -38,9 +38,17 @@ public class DamageArea : MonoBehaviour {
             Character colCharacter = col.GetComponent<Character>();
             if(colCharacter!=null && colCharacter.friend != friend)
             {
-                Debug.Log("Object hited");
-                colCharacter.DealDamage(damage);
+                if(!colCharacter.boss)
+                {
+                    Debug.Log("Object hited");
+                    colCharacter.DealDamage(damage);
+                }else 
+                {
+                    Debug.Log("Boss hited");
+                    colCharacter.DealDamage(1);
+                }
                 DestroyBullet();
+
             }
         }
 
