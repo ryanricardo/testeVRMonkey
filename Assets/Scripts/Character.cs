@@ -53,6 +53,9 @@ public class Character : MonoBehaviour {
 
     public virtual void DealDamage(float val)
     {
-        
+        energyLeft -= val;
+        if(energyLeft <= 0)
+            dead = true;
+
     }
 }

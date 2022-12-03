@@ -10,6 +10,7 @@ public class StealthPlayerController : Character {
 
     public GameObject normalModel;
     public GameObject cloakedModel;
+    public Transform bulletExit;
 
     Renderer normalRenderer;
     Renderer cloakedRenderer;
@@ -281,7 +282,10 @@ public class StealthPlayerController : Character {
                 threadController.speed = threadWalkSpeed;
                 threadController.audioSource.pitch = 1.0f;
             }
-
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                Shot();
+            }
             if (inputVector.magnitude > 0.1f)
             {
                 threadController.moving = true;
@@ -435,6 +439,11 @@ public class StealthPlayerController : Character {
             rb.velocity = newSpeed;
 
         }
+    }
+
+    protected void Shot()
+    {
+        Instantiate(bullet, bulletExit.transform.position, bulletExit.transform.rotation);
     }
 
     public void rotate(Vector3 direction3d)
