@@ -31,7 +31,7 @@ public class ShockDamageArea : MonoBehaviour {
         if(colAIagent != null)
         {
             Debug.Log("Shock Enemy");
-            colAIagent.OnShock(0);
+            colAIagent.OnShock(stunTime);
         }
     }
 }
