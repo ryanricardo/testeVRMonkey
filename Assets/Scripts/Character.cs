@@ -34,10 +34,10 @@ public class Character : MonoBehaviour {
             timerToPause += Time.deltaTime;
             if(timerToPause >= timeToPause)
             {
-                dead = true;
+                hitStun = true;
                 if(timerToPause >= timeToPause * 2)
                 {
-                    dead = false;
+                    hitStun = false;
                     timerToPause = 0;
                 }
                 

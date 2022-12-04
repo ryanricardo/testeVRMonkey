@@ -459,6 +459,7 @@ public class StealthPlayerController : Character {
     protected void Shot()
     {
         Instantiate(bullet, bulletExit.transform.position, bulletExit.transform.rotation);
+        energy -= 5;
         timerToShoot = 0;
     }
 
