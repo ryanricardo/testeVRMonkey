@@ -12,6 +12,7 @@ public class StealthPlayerController : Character {
     public GameObject cloakedModel;
     public Transform bulletExit;
 
+    public AudioClip clipHover;
     Renderer normalRenderer;
     Renderer cloakedRenderer;
 
@@ -453,6 +454,8 @@ public class StealthPlayerController : Character {
 
     protected void Hover()
     {
+        if(!audioSource.isPlaying)
+            audioSource.PlayOneShot(clipHover);
         transform.position = new Vector3(transform.position.x, 1.50f, transform.position.z);
     }
 
